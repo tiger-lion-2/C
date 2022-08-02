@@ -1,0 +1,4 @@
+﻿  test.c
+D:\C\第三天\第三天\test.c(7,1): warning C4005: “MAX”: 宏重定义
+D:\C\第三天\第三天\test.c(5): message : 参见“MAX”的前一个定义
+  第三天.vcxproj -> D:\C\第三天\Debug\第三天.exe
