@@ -3,6 +3,7 @@
 #include <string.h>
 #include <windows.h>
 #include <stdlib.h>
+#include <math.h>
 
 //计算n的阶乘
 //int main()
@@ -88,25 +89,237 @@
 
 // 编写代码，演示多个字符从两端移动，向中间汇聚。
 
+//int main()
+//{
+//	char arr1[] = "Welcome to here!!!!!\n";
+//	char arr2[] = "###################!\n";
+//
+//	int left = 0;
+//	//int right = strlen(arr1);
+//	int right = sizeof(arr1) / sizeof(arr1[0]) - 2;//当字符串计算元素个数时，'\0'也会被算，当计算长度时，不会被算
+//
+//	while (left <= right)
+//	{
+//		arr2[left] = arr1[left];
+//		arr2[right] = arr1[right];
+//		printf("%s", arr2);
+//		Sleep(1000);//休息1000ms
+//		system("cls");//清屏
+//		left++;
+//		right--;
+//	}
+//	printf("%s", arr2);
+//	return 0;
+//}
+
+
+//对一个有序数组中查找某一个元素
+//int main()
+//{
+//	//这样查找效率低下，假设查找元素是10，那么最坏要查找10次
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k =7;//假设查找7
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
+//	{
+//		if (arr[i] == k)
+//		{
+//			printf("找到了，下标是%d\n", i);
+//			break;
+//		}
+//	}
+//	if (i == sz)
+//	{
+//		printf("找不到\n");
+//	}
+//	
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k = 7;
+//
+//	int left = 0;
+//	int right = sizeof(arr) / sizeof(arr[0]) - 1;
+//
+//	//这种方法叫折半查找法，或者叫二分查找法，时间复杂度为log_2(n)
+//	while (left <= right)
+//	{
+//		int mid = (left + right) / 2;
+//
+//		if (arr[mid] > k)
+//		{
+//			right = mid - 1;
+//		}
+//		else if (arr[mid] < k)
+//		{
+//			left = mid + 1;
+//		}
+//		else
+//		{
+//			printf("找到了，下标是%d\n", mid);
+//			break;
+//		}
+//	}
+//	if (left > right)
+//	{
+//		printf("找不到\n");
+//	}
+//	
+//	return 0;
+//}
+
+
+//输入3个数字，按照从大到小顺序打印
+
+
+//打印1-100之间3的倍数
+//int main()
+//{
+//	int i = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 3 == 0)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+
+
+//最大公约数
+//方法：辗转相除法
 int main()
 {
-	char arr1[] = "Welcome to here!!!!!\n";
-	char arr2[] = "###################!\n";
-
-	int left = 0;
-	//int right = strlen(arr1);
-	int right = sizeof(arr1) / sizeof(arr1[0]) - 2;//当字符串计算元素个数时，'\0'也会被算，当计算长度时，不会被算
-
-	while (left <= right)
+	int m, n;
+	scanf("%d%d", &m, &n);
+	int r;
+	while (m%n)
 	{
-		arr2[left] = arr1[left];
-		arr2[right] = arr1[right];
-		printf("%s", arr2);
-		Sleep(1000);//1000ms
-		system("cls");//清屏
-		left++;
-		right--;
+		r = m % n;
+		m = n;
+		n = r;
 	}
-	printf("%s", arr2);
+	printf("%d\n", n);
 	return 0;
 }
+
+
+//打印闰年
+//1、能被4整除并且不能被100整除是闰年
+//2、能被400整除是闰年
+//int main()
+//{
+//	int year;
+//	int count = 0;
+//	for (year = 1000; year <= 2000; year++)
+//	{
+//		if (year % 4 == 0 && year % 100 != 0)
+//		{
+//			printf("%d ", year);
+//			count++;
+//		}
+//		else if(year % 400 == 0)
+//		{
+//			printf("%d ", year);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);
+//	return 0;
+//}
+//上述代码也可写成
+//int main()
+//{
+//	int year;
+//	int count = 0;
+//	for (year = 1000; year <= 2000; year++)
+//	{
+//		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+//		{
+//			printf("%d ", year);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);
+//	return 0;
+//}
+
+
+//打印素数
+//素数：只能被1和它本身整除
+//方法：试除法
+//int main()
+//{
+//	//打印100-200之间的素数
+//	int i = 0;
+//	int count = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int j = 0;
+//		for (j = 2; j < i; j++)
+//		{
+//			//能被2--（i-1)之间的数整除，直接break
+//			if (i % j == 0)
+//				break;
+//		}
+//		//break和j=i都会跳到这里，所以增加判断
+//		//如果j==i,表示上述判断不执行，则为素数
+//		if (j == i)
+//		{
+//			printf("%d ", i);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);
+//	return 0;
+//}
+//该代码可以优化，如果一个数不是素数，则可写成i=a*b,并且有结论你，a和b其中一个小于必定开平方i
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int j = 0;
+//		for (j = 2; j <= sqrt(i); j++)
+//		{
+//			if (i % j == 0)
+//				break;
+//		}
+//		if (j > sqrt(i))
+//		{
+//			printf("%d ", i);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);
+//	return 0;
+//}
+//该代码还可以优化。偶数一定不是素数，因此可以直接跳过
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 101; i <= 200; i+=2)
+//	{
+//		int j = 0;
+//		for (j = 2; j <= sqrt(i); j++)
+//		{
+//			if (i % j == 0)
+//				break;
+//		}
+//		if (j > sqrt(i))
+//		{
+//			printf("%d ", i);
+//			count++;
+//		}
+//	}
+//	printf("\ncount=%d\n", count);
+//	return 0;
+//}
