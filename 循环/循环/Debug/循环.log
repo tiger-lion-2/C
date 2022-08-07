@@ -1,2 +1,4 @@
 ﻿  main.c
+D:\program_document\C\鹏哥c\循环\循环\main.c(36,2): warning C4013: “system”未定义；假设外部返回 int
+D:\program_document\C\鹏哥c\循环\循环\main.c(41,7): warning C4013: “strcmp”未定义；假设外部返回 int
   循环.vcxproj -> D:\program_document\C\鹏哥c\循环\Debug\循环.exe

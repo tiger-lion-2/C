@@ -175,6 +175,32 @@
 
 
 //输入3个数字，按照从大到小顺序打印
+int main()
+{
+	int a, b, c;
+	printf("请输入:>");
+	scanf("%d%d%d", &a, &b, &c);
+	if (a < b)//找出a和b的最大数
+	{
+		int tmp = a;
+		a = b;
+		b = tmp;
+	}
+	if (a < c)
+	{
+		int tmp = a;
+		a = c;
+		c = tmp;
+	}
+	if (b < c)
+	{
+		int tmp = b;
+		b = c;
+		c = tmp;
+	}
+	printf("%d %d %d\n", a, b, c);//a中存最大，b次之，c最小
+	return 0;
+}
 
 
 //打印1-100之间3的倍数
@@ -194,20 +220,20 @@
 
 //最大公约数
 //方法：辗转相除法
-int main()
-{
-	int m, n;
-	scanf("%d%d", &m, &n);
-	int r;
-	while (m%n)
-	{
-		r = m % n;
-		m = n;
-		n = r;
-	}
-	printf("%d\n", n);
-	return 0;
-}
+//int main()
+//{
+//	int m, n;
+//	scanf("%d%d", &m, &n);
+//	int r;
+//	while (m%n)
+//	{
+//		r = m % n;
+//		m = n;
+//		n = r;
+//	}
+//	printf("%d\n", n);
+//	return 0;
+//}
 
 
 //打印闰年
@@ -321,5 +347,152 @@ int main()
 //		}
 //	}
 //	printf("\ncount=%d\n", count);
+//	return 0;
+//}
+
+
+//编写一个代码。数一下1-100之间所有的数字9个数
+// 9,19,29,39,49,59,69,79,89,99
+// 90,91,92,93,94,95,96,97,98,99
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		//if (i % 10 == 9 || i / 10 == 9)//这样写会把99当做一个来处理
+//		if(i%10==9)
+//		{
+//			count++;
+//			printf("%d ", i);
+//		}
+//		if (i / 10 == 9)
+//		{
+//			count++;
+//			printf("%d ", i);
+//		}
+//	}
+//	printf("count=%d\n", count);
+//	return 0;
+//}
+
+
+//计算1/1-1/2+1/3... -1/100
+//int main()
+//{
+//	int i = 0;
+//	int flag = 1;
+//	double sum = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		sum += flag * (1.0 / i);
+//		flag = -flag;
+//	}
+//	printf("sum=%lf\n", sum);
+//	return 0;
+//}
+
+//计算10个整数中的最大值
+//int main()
+//{
+//	//int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int arr[] = { -1,-2,-3,-4,-5 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i;
+//	//int max = 0;//这里把max置为0还是有问题，当数组中元素是[-1,-2,-3,-4,-5...]，都比0小时，求得的最大
+//				//还是0，因此把max置为arr[0]
+//	int max = arr[0];
+//	//从第二个元素开始比较
+//	for (i = 1; i < sz; i++)
+//	{
+//		if (max < arr[i])
+//			max = arr[i];
+//	}
+//	printf("max = %d\n", max);
+//	return 0;
+//}
+
+
+//在屏幕上输出乘法口诀表
+//int main()
+//{
+//	int i, j;
+//	for (i = 1; i <= 9; i++)
+//	{
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("%d*%d=%-2d ", j, i, i * j);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//猜数字游戏
+//1、生成随机数
+//2、猜数字
+
+//void menu()
+//{
+//	printf("**********************************\n");
+//	printf("****    1、play    0、exit    ****\n");
+//	printf("**********************************\n");
+//}
+//
+//#include <time.h>
+//void game()
+//{
+//	int guess;//接受猜的数字
+//	//printf("开始游戏\n");
+//	//1、生成1-100之间的随机数
+//	//int ret = rand()%100 + 1;
+//	//printf("%d\n", ret);
+//	while (1)
+//	{
+//		int ret = rand() % 100 + 1;
+//		printf("请输入要猜的数字:>");
+//		scanf("%d", &guess);
+//		if (ret > guess)
+//		{
+//			printf("猜小了\n");
+//		}
+//		else if (ret < guess)
+//		{
+//			printf("猜大了\n");
+//		}
+//		else
+//		{
+//			printf("恭喜你，猜对了！！\n");
+//			break;
+//		}
+//	}
+//}
+//
+//int main()
+//{
+//	int input = 0;
+//	//设置时间戳
+//	//time_t time(time_t *timer)
+//	//srand(unsigned seed)
+//	srand((unsigned int)time(NULL));
+//	do
+//	{
+//		menu();
+//		printf("请选择:>");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();//猜数字游戏
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break;
+//		default:
+//			printf("请重新选择:>");
+//			break;
+//		}
+//	} while (input);
 //	return 0;
 //}

@@ -1,9 +1,155 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <string.h>  //提供strcmp函数  
+#include <stdlib.h> //提供system函数
 
 //c语言是一门 结构化 的程序设计语言
 //“结构化”：1、顺序结构 2、选择结构 3、循环结构
 
+
+//shutdown      -s          -t          60
+//         设置关机     设置时间关机      60s之后关机
+//shutdown      -a
+//           取消关机
+
+//int main()
+//{
+//	char arr[20];
+//	system("shutdown -s -t 60");
+//error:
+//	printf("请注意：你的电脑会在一分钟之后关机，如果输入：我是猪，就取消关机\n请输入:>");
+//	scanf("%s", arr);
+//	if (strcmp(arr, "我是猪") == 0)
+//	{
+//		system("shutdown -a");
+//	}
+//	else
+//	{
+//		goto error;
+//	}
+//	return 0;
+//}
+
+
+//也可以使用循环实现
+int main()
+{
+	char arr[20];
+	system("shutdown -s -t 60");
+	while (1)
+	{
+		printf("请注意：你的电脑会在一分钟之后关机，如果输入：我是猪，就取消关机\n请输入:>");
+		scanf("%s", arr);
+		if (strcmp(arr, "我是猪") == 0)
+		{
+			system("shutdown -a");
+			break;
+		}
+	}
+	return 0;
+}
+
+//goto语句,不建议使用
+//goto语句使用场景
+//for (...)
+//{
+//	for (...)
+//	{
+//		for (...)
+//		{
+//			if (disaster)
+//				goto error;//error是个标签
+//		}
+//	}
+//}
+//
+//error:
+//	if(disaster)
+//		//处理错误情况
+
+
+
+
+//for循环
+
+//for循环的变体
+// 
+//一道笔试题
+//int main()
+//{
+//	int i = 0;
+//	int k = 0;
+//	//循环0次，把0赋值为k，为假，不进入循环体
+//	for (i = 0, k = 0; k = 0; i++, k++)
+//		k++;
+//	return 0;
+//}
+
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (; i < 10; i++)
+//	{
+//		for (; j < 10; j++)
+//		{
+//			//进入内层循环后，j未被初始化，一直是10，所以执行10次
+//			printf("haha\n");
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = 0; j < 10; j++)
+//		{
+//			//执行10*10=100次
+//			printf("hehe\n");
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	//for循环的初始化，判断，调整都可以省略，但是for循环的判断省略，判断条件就表示恒为正
+//	for (;;)
+//	{
+//		printf("haha\n");//死循环
+//	}
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		//不要在for循环内部修改变量，会失去控制
+//		if (i = 5)
+//			printf("haha\n");
+//		printf("hehe\n");
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//       初始化；判断条件；调整变量
+//	for (i = 1; i <= 10; i++)
+//	{
+//		if (i == 5)
+//			continue;
+//		printf("%d ", i);
+//	}
+//	return 0;
+//}
 
 //int main()
 //{
@@ -12,15 +158,36 @@
 //	return 0;
 //}
 
-int main()
-{
-	int ch = 0;
-	while ((ch = getchar()) != EOF)
-	{
-		putchar(ch);
-	}
-	return 0;
-}
+//int main()
+//{
+//	/*int ch = 0;
+//	while ((ch = getchar()) != EOF)
+//	{
+//		putchar(ch);
+//	}*/
+//	int ch;
+//	char password[20] = { 0 };
+//	printf("请输入密码:>");
+//	scanf("%s", password);//scanf只读取空格前的，设置密码为123456 ABCD就会报错
+//	while ((ch = getchar()) != '\n')
+//	{
+//		;
+//	}
+//	printf("请确认密码(Y/N):>");
+//	//缓冲区还剩一个'\n'
+//	//需要读取'\n'
+//	//getchar();
+//	int ret = getchar();
+//	if (ret == 'Y')
+//	{
+//		printf("确认成功");
+//	}
+//	else
+//	{
+//		printf("放弃确认");
+//	}
+//	return 0;
+//}
 
 
 //while语句
